@@ -1,66 +1,57 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        storyblok-blog
-      </h1>
-      <h2 class="subtitle">
-        learning
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
+  <section id="posts">
+        <PostPreview v-for="post in posts"
+                     :key="post.id"
+                     :title="post.title"
+                     :subtitle="post.previewText"
+                     :thumbnailImage="post.thumbnailURl"
+                     :id="post.id"/>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+    import PostPreview from "../components/blog/PostPreview";
+ export default{
+     components: {PostPreview},
+     data(){
+     return{
+         components:{
+             PostPreview
+         },
+         posts: [
+             {
+                 title: "A new world",
+                 previewText: "this will be the best site in the world ",
+                 thumbnailURl: 'https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+                 id: 'a-new-beginning'
+             },
+             {
+                 title: "A new world part2",
+                 previewText: "this will be the best site in the world ",
+                 thumbnailURl: 'https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+                 id: 'a-new-beginning-2'
+             }
+         ]
+     }
+ }
+ }
 
-export default {
-  components: {
-    Logo
-  }
-}
 </script>
 
-<style>
+<style scoped>
+ #posts{
+     padding-top: 1.5rem;
+     display:flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+ }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+@media (min-width: 35rem){
+    #posts{
+        flex-direction: row;
+    }
 }
 </style>

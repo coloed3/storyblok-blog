@@ -4,6 +4,7 @@
             <ul class="nav-links">
                 <nuxt-link to="/" tag="li" class="nav-link"><a>All Post</a></nuxt-link>
                 <nuxt-link to="/about" tag="li" class="nav-link"><a>About</a></nuxt-link>
+
             </ul>
         </nav>
     </header>
@@ -26,6 +27,7 @@
     }
     .main-nav{
         height: 100%;
+        padding-top: 10px;
     }
     .nav-links{
         list-style: none;
@@ -36,7 +38,7 @@
         align-items: center;
         height: 100%;
     }
-    .nav-lin{
+    .nav-link{
         display:flex;
         height: 100%;
         justify-content:center;
@@ -48,13 +50,17 @@
         display: block;
         text-decoration: none;
         color:#fff;
-        padding: 20px;
-        text-transform: uppercase;
+
+    }
+
+    .nav-link.nuxt-link-exact-active{
+        border-bottom: 3px solid #06c4d1;
     }
 
     .nav-link a:hover,
-    .nav-link a:active
+    .nav-link a:active,
+    .nav-link.nuxt-link-exact-active a
     {
-       color:  orange;
+       color:  #06c4d1;
     }
 </style>
